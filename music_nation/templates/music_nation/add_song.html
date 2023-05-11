@@ -1,0 +1,27 @@
+{% extends 'music_nation/base2.html' %}
+{% load static %}
+{% block content %}
+<div class="p-2 mt-4">
+    <form style="width: 100%; max-width: 500px; margin: auto" class="card p-4" method="POST" action="{% url 'music_nation:add_song' username album %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger" role="alert">
+                {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <h4>Add new Song</h4>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Song name</label>
+          <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Album name">
+        </div>
+        <div class="form-group">
+          <label for="Albumlogo">Song file</label>
+          <input name="file" type="file" class="form-control" id="Albumlogo" accept="audio/*">
+        </div>
+          
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+{% endblock %}

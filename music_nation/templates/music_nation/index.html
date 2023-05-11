@@ -1,0 +1,56 @@
+{% extends 'music_nation/base2.html' %}
+{% load static %}
+{% block content %}
+      
+        <page-home>
+      
+          <div class="col-md-12 po">
+            <div class="section-banner">
+      
+              <p class="section-banner-title">Music <br> For <br> Everyone</p>
+      
+            </div>
+          </div>
+      
+        </page-home>
+        
+      
+        <div class="col-md-6 mt-3 fl po">
+      
+          {% for album in albums %}
+            <div class="post__card-2">
+              <div class="post__card_-2">
+                <a href="{% url 'music_nation:album_detail' username=album.album_artist album=album.album_name %}">
+                <div class="post__card__image-2" style="background-image: url({{ album.album_logo.url }})">
+                </div>
+                </a>
+                <div>
+                  <div class="post__card_meta-2">
+                    <p class="post__card_title-2">
+                      {{album.album_name}}
+                    </p>
+                    <p class="post__card_alttitle-2">
+                      <a class="home-a text-dark" href="{% url 'music_nation:profile_detail' username=album.album_artist %}">
+                      {{album.album_artist}}
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="col-md-6 mt-3 fl po">
+          <div class="ml-4 d-flex mb-4">
+            <img src="{{first_album.album_logo.url}}" alt="" height="60px">
+            <div>
+              <h3 class="ml-3">{{first_album.album_name}}</h3>
+              <p class="ml-3">{{first_album.album_artist}}</p>
+            </div>
+          </div>
+          
+          <ul id="musiclist"></ul>
+      
+        </div>
+      
+{% endblock %}

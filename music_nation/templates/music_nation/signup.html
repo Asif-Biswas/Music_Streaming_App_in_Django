@@ -1,0 +1,44 @@
+{% extends 'music_nation/base2.html' %}
+{% block content %}
+
+<div class="p-2 mt-4">
+    <form style="width: 100%; max-width: 500px; margin: auto" class="card p-4" method="POST" action="{% url 'music_nation:signup' %}">
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger" role="alert">
+                {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <h4>Sign up</h4>
+        <div class="form-group">
+            <label for="firstname">First name</label>
+            <input type="text" name="first_name" class="form-control" id="firstname" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="lastname">Last name</label>
+            <input type="text" name="last_name" class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="password2">Confirm password</label>
+            <input name="password2" type="password" class="form-control" id="password2" placeholder="Password">
+          </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <p class="mt-3">Already have an account? <a href="{% url 'music_nation:login' %}">Login</a></p>
+      </form>
+</div>
+
+{% endblock %}
