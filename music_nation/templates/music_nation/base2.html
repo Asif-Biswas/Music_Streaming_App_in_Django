@@ -20,7 +20,7 @@
             <div class="navWrapper">
               <a href="{% url 'music_nation:home' %}" id="logo">
                 <img src="{% static 'images/logo.png' %}" style="border-radius: 6px 0 6px 0" width="50px" alt="logo" />
-                Music App</a>
+                Sonic Share</a>
               <div class="right">
                 <div>
                   {% if user.is_authenticated %}
@@ -48,6 +48,9 @@
                       <a href="{% url 'music_nation:signup' %}" id="register">Register</a>
                     {% endif %}
                     <p>Copyright 2023</p>
+                      <div class="mt-5 text-white" style="margin-left: 135px">Background Color:
+                        <input type="color" id="colorPicker" />
+                      </div>
                   </div>
                 </div>
               </div>
@@ -59,11 +62,10 @@
 
 
         <br><br><br><br>
-        <p>Change Background Color
-          <input type="color" id="colorPicker" />
-        </p>
+       
+
     </main>
-      
+    
       <div class="music">
         <div class="container">
           {% comment %} <div id="abl" class="album">
@@ -97,6 +99,10 @@
           <div class="progress-panel">
             <progress id="progress-bar" value="0" max="100"></progress>
             <div class="time">
+              <label style="margin-right: 8px">
+                Volume
+                <input id="volume" type="range" id="volume" min="0" max="1" step="0.01" value="1" />
+              </label>
               <label id="start-time">00:00</label>
               {% comment %} <label>/</label>
               <label id="end-time">00:00</label> {% endcomment %}
@@ -108,6 +114,7 @@
       
       <audio id="music">
       </audio>
+
 
         <script>
           let tracks = {{ songs|safe }};
@@ -132,5 +139,7 @@
 
 
         </script>
+
+        
 </body>
 </html>
