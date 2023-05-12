@@ -18,7 +18,9 @@
         <div class="head">
           <nav>
             <div class="navWrapper">
-              <a href="{% url 'music_nation:home' %}" id="logo">Music App</a>
+              <a href="{% url 'music_nation:home' %}" id="logo">
+                <img src="{% static 'images/logo.png' %}" style="border-radius: 6px 0 6px 0" width="50px" alt="logo" />
+                Music App</a>
               <div class="right">
                 <div>
                   {% if user.is_authenticated %}
@@ -57,7 +59,9 @@
 
 
         <br><br><br><br>
-      
+        <p>Change Background Color
+          <input type="color" id="colorPicker" />
+        </p>
     </main>
       
       <div class="music">
@@ -110,5 +114,23 @@
         </script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="{% static 'js/index.js' %}"></script>
+        <script>
+          const colorPicker = document.getElementById("colorPicker");
+          const body = document.querySelector("body");
+          colorPicker.addEventListener("change", (e) => {
+            body.style.backgroundColor = e.target.value;
+            // save the color in local storage
+            localStorage.setItem("bgcolor", e.target.value);
+          });
+
+          // get the color from local storage
+          const bgcolor = localStorage.getItem("bgcolor");
+          if (bgcolor) {
+            body.style.backgroundColor = bgcolor;
+            colorPicker.value = bgcolor;
+          }
+
+
+        </script>
 </body>
 </html>

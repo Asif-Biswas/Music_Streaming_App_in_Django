@@ -595,7 +595,6 @@ h1::-moz-selection {
 nav {
     width: 100vw;
     height: 100px;
-    background: white;
     position: absolute;
     top: 0;
 }
